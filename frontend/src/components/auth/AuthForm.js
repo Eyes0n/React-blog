@@ -20,7 +20,7 @@ const AuthFormBlock = styled.div`
  */
 const StyledInput = styled.input`
   font-size: 1rem;
-  border:none;
+  border: none;
   border-bottom: 1px solid ${palette.gray[5]};
   padding-bottom: 0.5rem;
   outline: none;
@@ -55,28 +55,37 @@ const ButtonWithMarginTop = styled(Button)`
 
 const textMap = {
   login: '로그인',
-  register: '회원가입'
-}
+  register: '회원가입',
+};
 
-const AuthForm = ({ type }) => {
-  const text = textMap[type]
+const AuthForm = ({ type, form, onChange, onSubmit }) => {
+  const text = textMap[type];
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
-      <form>
-        <StyledInput autoComplete='username' name='username' placeholder='ID'/>
-        <StyledInput 
-          type='password' 
-          autoComplete='new-password' 
-          name='password' 
-          placeholder='Password'
+      <form onSubmit={onSubmit}>
+        <StyledInput
+          autoComplete="username"
+          name="username"
+          placeholder="ID"
+          onChange={onChange}
+          value={form.username}
+        />
+        <StyledInput
+          type="password"
+          autoComplete="new-password"
+          name="password"
+          placeholder="Password"
+          onChange={onChange}
+          value={form.password}
         />
         {type === 'register' && (
-          <StyledInput 
-          type='password' 
-          autoComplete='new-password' 
-          name='passwordConfirm' 
-          placeholder='비밀번호 확인'
+          <StyledInput
+            type="password"
+            autoComplete="new-password"
+            name="passwordConfirm"
+            placeholder="비밀번호 확인"
+            value={form.passwordConfirm}
           />
         )}
         <ButtonWithMarginTop cyan fullWidth>
@@ -85,9 +94,9 @@ const AuthForm = ({ type }) => {
       </form>
       <Footer>
         {type === 'login' ? (
-          <Link to='/register'>회원가입</Link>
+          <Link to="/register">회원가입</Link>
         ) : (
-          <Link to='/login'>로그인</Link>
+          <Link to="/login">로그인</Link>
         )}
       </Footer>
     </AuthFormBlock>
