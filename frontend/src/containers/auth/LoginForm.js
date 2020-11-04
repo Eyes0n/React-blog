@@ -17,7 +17,7 @@ const LoginForm = ({ history }) => {
 
   // 인풋 변경 이벤트 핸들러
   const onChange = (e) => {
-    const { value, name } = e.tartget;
+    const { value, name } = e.target;
     dispatch(
       changeField({
         form: 'login',
