@@ -8,13 +8,14 @@ export const createRequestActionTypes = (type) => {
 };
 
 export default function createRequestSaga(type, request) {
-  const SUCCESS = `${type}_SUCESS`;
+  const SUCCESS = `${type}_SUCCESS`;
   const FAILURE = `${type}_FAILURE`;
 
   return function* (action) {
     yield put(startLoading(type)); // 로딩 시작
     try {
       const response = yield call(request, action.payload);
+      console.log('Saga response', response);
       yield put({
         type: SUCCESS,
         payload: response.data,
