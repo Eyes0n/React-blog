@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import produce from 'immer';
 import { takeLatest } from 'redux-saga/effects';
-import createRequsetSaga, {
+import createRequestSaga, {
   createRequestActionTypes,
 } from '../lib/createRequestSaga';
 import * as authAPI from '../lib/api/auth';
@@ -21,7 +21,7 @@ export const changeField = createAction(
   CHANGE_FIELD,
   ({ form, key, value }) => ({
     form, // register, login
-    key, // username, password, passwardConfirm
+    key, // username, password, passwordConfirm
     value, // 실제 바꾸려는 값
   }),
 );
@@ -38,8 +38,8 @@ export const login = createAction(LOGIN, ({ username, password }) => ({
 }));
 
 // Saga 생성
-const registerSaga = createRequsetSaga(REGISTER, authAPI.register);
-const loginSaga = createRequsetSaga(LOGIN, authAPI.login);
+const registerSaga = createRequestSaga(REGISTER, authAPI.register);
+const loginSaga = createRequestSaga(LOGIN, authAPI.login);
 export function* authSaga() {
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(LOGIN, loginSaga);
