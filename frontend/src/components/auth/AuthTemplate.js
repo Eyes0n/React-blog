@@ -8,7 +8,7 @@ import palette from '../../lib/styles/palette';
 */
 
 /* 화면 전체를 키움 */
-const AuthTamplateBlock = styled.div`
+const AuthTemplateBlock = styled.div`
   position: absolute;
   left: 0;
   top: 0;
@@ -31,24 +31,24 @@ const WhiteBox = styled.div`
     font-weight: bold;
     letter-spacing: 2px;
   }
-  box-shadow: 0 0 8px rgba(0,0,0,0.025);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
   padding: 2rem;
   width: 360px;
   background: white;
   border-radius: 2px;
 `;
 
-const AuthTamplate = ({ children }) => {
+const AuthTemplate = ({ children }) => {
   return (
-    <AuthTamplateBlock>
+    <AuthTemplateBlock>
       <WhiteBox>
-        <div className='logo-area'>
-          <Link to='/'>REACTERS</Link>
+        <div className="logo-area">
+          <Link to="/">REACTERS</Link>
         </div>
         {children}
       </WhiteBox>
-    </AuthTamplateBlock>
+    </AuthTemplateBlock>
   );
 };
 
-export default AuthTamplate;
+export default AuthTemplate;
