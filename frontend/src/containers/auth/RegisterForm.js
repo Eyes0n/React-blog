@@ -63,12 +63,12 @@ const RegisterForm = ({ history }) => {
       // 기타 이유
       setError('회원가입 실패');
       console.log('오류 발생');
-      console.log(authError);
+      console.log('authError: ', authError);
       return;
     }
     if (auth) {
       console.log('회원가입 성공');
-      console.log(auth);
+      console.log('auth: ', auth);
       dispatch(check());
     }
   }, [auth, authError, dispatch]);
@@ -77,7 +77,7 @@ const RegisterForm = ({ history }) => {
   useEffect(() => {
     if (user) {
       console.log('check API 성공');
-      console.log(user);
+      console.log('user: ', user);
       history.push('/'); // 홈 화면으로 이동
     }
   }, [user, history]);
