@@ -24,16 +24,19 @@ const initialState = {
   post: null,
   error: null,
 };
-export const post = handleActions({
-  [READ_POST_SUCCESS]: (state, { payload: post }) => ({
-    ...state,
-    post,
-  }),
-  [READ_POST_FAILURE]: (state, { payload: error }) => ({
-    ...state,
-    error,
-  }),
-  [UNLOAD_POST]: () => initialState,
-});
+export const post = handleActions(
+  {
+    [READ_POST_SUCCESS]: (state, { payload: post }) => ({
+      ...state,
+      post,
+    }),
+    [READ_POST_FAILURE]: (state, { payload: error }) => ({
+      ...state,
+      error,
+    }),
+    [UNLOAD_POST]: () => initialState,
+  },
+  initialState,
+);
 
 export default post;
