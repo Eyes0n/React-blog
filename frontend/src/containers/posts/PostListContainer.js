@@ -21,8 +21,8 @@ const PostListContainer = ({ location, match }) => {
     const { tag, page } = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
-    console.log('location', location); // queryString -> location
-    console.log('match', match); // parameter -> match
+    console.log('PostList location', location); // queryString -> location
+    console.log('PostList match', match); // parameter -> match
     dispatch(listPosts({ tag, username, page }));
   }, [dispatch, location, location.search, match, match.params]);
 
