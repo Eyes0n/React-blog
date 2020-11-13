@@ -34,6 +34,8 @@ const PostViewerContainer = ({ match, history }) => {
     history.push('/write');
   };
 
+  const onRemove = () => {}; //Todo: onRemove 구현
+
   const ownPost = (user && user._id) === (post && post.user._id);
 
   return (
@@ -41,7 +43,9 @@ const PostViewerContainer = ({ match, history }) => {
       post={post}
       loading={loading}
       error={error}
-      actionButtons={ownPost && <PostActionButtons onEdit={onEdit} />}
+      actionButtons={
+        ownPost && <PostActionButtons onEdit={onEdit} onRemove={onRemove} />
+      }
     />
   );
 };
