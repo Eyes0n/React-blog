@@ -62,6 +62,7 @@ const Editor = ({ title, body, onChangeField }) => {
     });
   }, [onChangeField]);
 
+  // 수정 버튼 클릭 시 제목 태크만 자동 입력되고 내용은 공백으로 출력되어서 내용의 초깃값 설정
   const mounted = useRef(false);
   useEffect(() => {
     if (mounted.current) return;
