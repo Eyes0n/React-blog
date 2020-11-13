@@ -12,11 +12,14 @@ const PostViewerContainer = ({ match, history }) => {
   console.log('PostViewerContainer match', match);
 
   const dispatch = useDispatch();
-  const { post, error, loading } = useSelector(({ post, loading, user }) => ({
-    post: post.post,
-    error: post.error,
-    loading: loading['post/READ_POST'],
-  }));
+  const { post, error, loading, user } = useSelector(
+    ({ post, loading, user }) => ({
+      post: post.post,
+      error: post.error,
+      loading: loading['post/READ_POST'],
+      user: user.user,
+    }),
+  );
 
   useEffect(() => {
     dispatch(readPost(postId));
@@ -36,7 +39,8 @@ const PostViewerContainer = ({ match, history }) => {
       post={post}
       loading={loading}
       error={error}
-      actionButtons={<PostActionButtons />}
+      actionButtons={<PostActionButtons onEdit={onEdit} />}
+      ownPost={user && user._id === post && post.user._id}
     />
   );
 };
