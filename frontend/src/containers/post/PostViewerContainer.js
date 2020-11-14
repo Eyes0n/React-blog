@@ -5,6 +5,7 @@ import { readPost, unloadPost } from '../../modules/post';
 import PostViewer from '../../components/post/PostViewer';
 import PostActionButtons from '../../components/post/PostActionButtons';
 import { setOriginalPost } from '../../modules/write';
+import { removePost } from '../../lib/api/posts';
 
 const PostViewerContainer = ({ match, history }) => {
   // 처음 마운트될 때 포스트 읽기 API 요청
@@ -34,7 +35,14 @@ const PostViewerContainer = ({ match, history }) => {
     history.push('/write');
   };
 
-  const onRemove = () => {}; //Todo: onRemove 구현
+  const onRemove = async () => {
+    try {
+      await removePost(postId);
+      history.push('/'); // 홈으로 이동
+    } catch (error) {
+      console.log('removeError', error);
+    }
+  };
 
   const ownPost = (user && user._id) === (post && post.user._id);
 
